@@ -1,0 +1,55 @@
+"use client";
+
+import React, { forwardRef } from "react";
+import classNames from "classnames";
+import styles from "./StatusIndicator.module.scss";
+import { Flex } from "./Flex";
+
+interface StatusIndicatorProps extends React.ComponentProps<typeof Flex> {
+  /** Size of the indicator */
+  size: "s" | "m" | "l";
+  /** Color theme */
+  color:
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "magenta"
+  | "pink"
+  | "red"
+  | "orange"
+  | "yellow"
+  | "moss"
+  | "green"
+  | "emerald"
+  | "aqua"
+  | "cyan"
+  | "gray";
+  /** Aria label for accessibility */
+  ariaLabel?: string;
+  /** Custom class name */
+  className?: string;
+  /** Custom styles */
+  style?: React.CSSProperties;
+}
+
+/**
+ * A colored dot indicator for status representation.
+ */
+const StatusIndicator = forwardRef<HTMLDivElement, StatusIndicatorProps>(
+  ({ size, color, ariaLabel = `${color} status indicator`, className, style, ...rest }, ref) => {
+    return (
+      <Flex
+        ref={ref}
+        style={style}
+        className={classNames(styles.statusIndicator, styles[size], styles[color], className)}
+        aria-label={ariaLabel}
+        radius="full"
+        {...rest}
+      />
+    );
+  },
+);
+
+StatusIndicator.displayName = "StatusIndicator";
+
+export { StatusIndicator };

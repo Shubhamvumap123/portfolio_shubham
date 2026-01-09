@@ -1,0 +1,124 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: var(--static-space-8);
+    border: none;
+    background: var(--static-transparent);
+    color: inherit;
+    transition: all 0.15s ease;
+    user-select: none;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    line-height: 1.5;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--neutral-on-background-strong);
+    opacity: 0;
+    border-radius: var(--radius-full);
+    transition: opacity 0.15s ease;
+}
+
+.button>* {
+    position: relative;
+    z-index: 1;
+}
+
+.button:hover::before {
+    opacity: 0.05;
+}
+
+.button:focus,
+.button:active,
+.button:focus-visible {
+    outline: none;
+}
+
+.button:active::before {
+    opacity: 0.1;
+}
+
+.button.selected {
+    background-color: var(--static-alpha-medium);
+    border-color: var(--static-alpha-medium);
+}
+
+/* Active/Selected state */
+.button[aria-pressed="true"]::before {
+    opacity: 0.1;
+}
+
+.button[aria-pressed="true"]:hover::before {
+    opacity: 0.15;
+}
+
+/* Sizes */
+.button.size-s {
+    height: var(--static-space-24);
+    min-height: var(--static-space-24);
+    padding: var(--static-space-2) var(--static-space-8);
+    font-size: var(--static-space-12);
+}
+
+.button.size-m {
+    height: var(--static-space-32);
+    min-height: var(--static-space-32);
+    padding: var(--static-space-4) var(--static-space-8);
+}
+
+.button.size-l {
+    height: var(--static-space-40);
+    min-height: var(--static-space-40);
+    padding: var(--static-space-8) var(--static-space-16);
+}
+
+/* Variants */
+.button.ghost {
+    border-color: var(--static-transparent);
+}
+
+.button.outline {
+    border-color: var(--static-alpha-medium);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .button {
+        color: var(--neutral-on-background-strong);
+    }
+
+    .button::before {
+        background: var(--neutral-on-background-strong);
+        opacity: 0.1;
+    }
+
+    .button:hover::before {
+        opacity: 0.2;
+    }
+
+    .button:active::before,
+    .button[aria-pressed="true"]::before {
+        opacity: 0.2;
+    }
+
+    .button:disabled {
+        background: var(--static-alpha-medium);
+        color: var(--static-alpha-medium);
+    }
+
+    .button.outline {
+        border-color: var(--static-alpha-medium);
+    }
+}

@@ -1,0 +1,136 @@
+"use client";
+
+import React, { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import classNames from "classnames";
+import styles from "./Logo.module.scss";
+import { SpacingToken } from "../types";
+import { Flex } from ".";
+
+const sizeMap: Record<string, SpacingToken> = {
+  xs: "20",
+  s: "24",
+  m: "32",
+  l: "40",
+  xl: "48",
+};
+
+interface LogoProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  /** Custom class name */
+  className?: string;
+  /** Size of the logo */
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  /** Custom styles */
+  style?: React.CSSProperties;
+  /** Whether to show the wordmark */
+  wordmark?: boolean;
+  /** Whether to show the icon */
+  icon?: boolean;
+  /** Custom icon source URL */
+  iconSrc?: string;
+  /** Custom wordmark source URL */
+  wordmarkSrc?: string;
+  /** Link URL */
+  href?: string;
+}
+
+/**
+ * A logo component that can display an icon, a wordmark, or both.
+ * Supports custom sources and sizing.
+ *
+ * Renders as a clickable link when `href` is provided, otherwise renders as static content.
+ * @warning Displays a console warning if both `icon` and `wordmark` are set to false.
+ */
+const Logo: React.FC<LogoProps> = ({
+  size = "m",
+  wordmark = true,
+  icon = true,
+  href,
+  iconSrc,
+  wordmarkSrc,
+  className,
+  style,
+  ...props
+}) => {
+  useEffect(() => {
+    if (!icon && !wordmark) {
+      console.warn(
+        "Both 'icon' and 'wordmark' props are set to false. The logo will not render any content.",
+      );
+    }
+  }, [icon, wordmark]);
+
+  const height = parseInt(sizeMap[size]);
+
+  const content = (
+    <>
+      {icon && !iconSrc && (
+        <div
+          style={{
+            height: `var(--static-space-${sizeMap[size]})`,
+          }}
+          className={styles.icon}
+        />
+      )}
+      {iconSrc && (
+        <Image
+          height={height}
+          width={height}
+          style={{
+            height: `var(--static-space-${sizeMap[size]})`,
+            width: "auto",
+          }}
+          alt="Logo icon"
+          src={iconSrc}
+        />
+      )}
+      {wordmark && !wordmarkSrc && (
+        <div
+          style={{
+            height: `var(--static-space-${sizeMap[size]})`,
+          }}
+          className={styles.type}
+        />
+      )}
+      {wordmarkSrc && (
+        <Image
+          height={height}
+          width={height * 3}
+          style={{
+            height: `var(--static-space-${sizeMap[size]})`,
+            width: "auto",
+          }}
+          alt="Logo wordmark"
+          src={wordmarkSrc}
+        />
+      )}
+    </>
+  );
+
+  return href ? (
+    <Link
+      className={classNames("radius-l", "display-flex", "fit-height", className)}
+      style={style}
+      href={href}
+      aria-label="Home"
+      {...props}
+    >
+      {content}
+    </Link>
+  ) : (
+    <Flex
+      className={classNames(className)}
+      radius="l"
+      fitHeight
+      style={style}
+      aria-label="Logo"
+    >
+      {content}
+    </Flex>
+  );
+};
+
+Logo.displayName = "Logo";
+
+export { Logo };

@@ -1,0 +1,109 @@
+.hover {
+  transition: var(--transition-micro-medium);
+}
+
+.mediumWeight {
+  font-weight: 600 !important;
+}
+
+.smallWeight {
+  font-weight: 300 !important;
+}
+
+.avatar {
+  position: sticky;
+  height: fit-content;
+  top: var(--static-space-4);
+}
+
+
+// Button styles with theme support
+.themeButton {
+  // Frosted glass effect matching Badge
+  background-color: var(--brand-alpha-weak) !important;
+  border: 1px solid var(--brand-alpha-medium) !important;
+  color: var(--neutral-on-background-strong) !important; // Ensure text is legible
+  backdrop-filter: blur(var(--static-space-12)); // Adjust blur amount as needed
+  transition: all var(--transition-micro-medium) !important;
+  border-radius: var(--radius-full) !important; // Ensure pill shape for uniform glow
+
+  // Hover state
+  &:hover:not(:disabled) {
+    background-color: var(--brand-alpha-medium) !important;
+    border-color: var(--brand-alpha-strong) !important;
+  }
+}
+
+
+@media (--s) {
+  .avatar {
+    top: auto;
+  }
+
+  .textAlign {
+    text-align: center;
+  }
+
+  .textAlign2 {
+    text-align: left;
+  }
+
+  .blockAlign {
+    align-self: center;
+  }
+
+  .nameHeading {
+    font-weight: 900;
+    /* Bold weight */
+  }
+
+  .heroSpacing {
+    margin-top: -24px !important; // Moves hero section up on mobile
+  }
+
+}
+
+.aboutContainer {
+  max-width: var(--responsive-width-l);
+
+  @media (--m) {
+    max-width: var(--responsive-width-m);
+  }
+}
+
+.languagesGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: var(--static-space-8);
+}
+
+.buttonRow {
+  display: flex;
+
+  @media (max-width: 584px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px 0px var(--brand-alpha-weak);
+    border-color: var(--brand-alpha-weak);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 4px var(--brand-alpha-strong), 0 0 10px 2px var(--brand-solid-strong);
+    border-color: var(--brand-alpha-strong);
+  }
+
+  100% {
+    box-shadow: 0 0 5px 0px var(--brand-alpha-weak);
+    border-color: var(--brand-alpha-weak);
+  }
+}
