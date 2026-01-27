@@ -9,8 +9,8 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "FullStack Web Developer",
-  avatar: "/images/avatar.jpg", // Placeholder or keep existing if generic
-  location: "Maharashtra, India",
+  avatar: "https://avatars.githubusercontent.com/u/94427228?v=4", // Correct GitHub avatar for Shubham Umap
+  location: "Wardha, Maharashtra, India",
   languages: ["English", "Hindi", "Marathi"],
 };
 
@@ -39,7 +39,7 @@ const social = [
 
 const home = {
   label: "Home",
-  title: `${person.name} - FullStack MERN Developer`,
+  title: `Shubham Umap | Senior FullStack Web Developer | React & Node.js Expert`,
   description: `Portfolio of ${person.name}, a FullStack Web Developer specialized in React.js, Node.js, and MongoDB.`,
   headline: (
     <RevealFx translateY="4" fillWidth horizontal="start">
@@ -61,11 +61,7 @@ const home = {
     ),
     href: "/work/bobbi-brown-clone",
   },
-  subline: (
-    <>
-      👋 Hi! I&apos;m Shubham Umap, a FullStack Web Developer with expertise in React.js, Node.js, and the MERN stack. I specialize in creating intuitive interfaces, optimizing API performance, and implementing secure authentication systems.
-    </>
-  ),
+  subline: `Transforming complex ideas into seamless digital experiences. Specialized in building scalable MERN stack applications with a focus on high-performance and user-centric design.`,
 };
 
 // About Page

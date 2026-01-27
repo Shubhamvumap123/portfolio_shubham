@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>✨ Dhruv Haldar's Portfolio</h1>
-  <p>A modern, performant portfolio built with Next.js, TypeScript, and Tailwind CSS</p>
+  <h1>✨ Shubham Umap's Portfolio</h1>
+  <p>A modern, performant portfolio built with Next.js, TypeScript, and Vanilla CSS</p>
   
   [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-228B22?style=flat-square)](https://creativecommons.org/licenses/by-nc/4.0/)
   [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=000000&labelColor=ffffff&color=000000)](https://nextjs.org/)
@@ -41,8 +41,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/dhruvhaldar/portfolio.git
-   cd portfolio
+   git clone https://github.com/Shubhamvumap123/portfolio_shubham.git
+   cd portfolio_shubham
    ```
 
 2. **Install dependencies**
@@ -213,5 +213,5 @@ If you encounter build issues:
 ---
 
 <div align="center">
-  Made with ❤️ by Dhruv Haldar using <a href="https://magic-portfolio.com/">Magic Portfolio</a>
+  Made with ❤️ by Shubham Umap using <a href="https://magic-portfolio.com/">Magic Portfolio</a>
 </div>

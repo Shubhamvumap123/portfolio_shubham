@@ -4,7 +4,7 @@ test.describe('Site Navigation and Content Verification', () => {
 
   test('Home page loads and displays projects', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/Dhruv Haldar/);
+    await expect(page).toHaveTitle(/Shubham Umap/);
 
     // Check for main heading
     await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
@@ -14,10 +14,10 @@ test.describe('Site Navigation and Content Verification', () => {
     // We expect at least one spotlight element (the project card wrapper)
     // If class name is unstable, check for project content
     if (await spotlightElements.count() > 0) {
-       await expect(spotlightElements.first()).toBeVisible();
+      await expect(spotlightElements.first()).toBeVisible();
     } else {
-       // Fallback: check if a project title is visible, implying projects loaded
-       await expect(page.locator('h2').first()).toBeVisible();
+      // Fallback: check if a project title is visible, implying projects loaded
+      await expect(page.locator('h2').first()).toBeVisible();
     }
   });
 
@@ -30,7 +30,7 @@ test.describe('Site Navigation and Content Verification', () => {
     const spotlightElements = page.locator('div[class*="Spotlight_spotlight"]');
     // We expect multiple spotlight elements if data exists
     if (await spotlightElements.count() > 0) {
-        await expect(spotlightElements.first()).toBeVisible();
+      await expect(spotlightElements.first()).toBeVisible();
     }
   });
 
@@ -50,24 +50,24 @@ test.describe('Site Navigation and Content Verification', () => {
   test('Publications page loads', async ({ page }) => {
     const response = await page.goto('/publications');
     if (response?.status() === 404) {
-        test.skip('Publications page not found');
+      test.skip(true, 'Publications page not found');
     } else {
-        await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
+      await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
 
-        // Check for Spotlight elements on posts
-        const spotlightElements = page.locator('div[class*="Spotlight_spotlight"]');
-        if (await spotlightElements.count() > 0) {
-            await expect(spotlightElements.first()).toBeVisible();
-        }
+      // Check for Spotlight elements on posts
+      const spotlightElements = page.locator('div[class*="Spotlight_spotlight"]');
+      if (await spotlightElements.count() > 0) {
+        await expect(spotlightElements.first()).toBeVisible();
+      }
     }
   });
 
   test('Gallery page loads', async ({ page }) => {
     const response = await page.goto('/gallery');
     if (response?.status() === 404) {
-        test.skip('Gallery page not found');
+      test.skip(true, 'Gallery page not found');
     } else {
-        await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
+      await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
     }
   });
 

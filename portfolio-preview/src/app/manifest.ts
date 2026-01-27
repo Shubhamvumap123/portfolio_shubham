@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Dhruv Haldar's Portfolio (With Projects & Publications)",
-    short_name: "Dhruv's Portfolio",
+    name: "Shubham Umap's Portfolio (FullStack MERN Developer)",
+    short_name: "Shubham's Portfolio",
     description:
-      "Explore Dhruv Haldar's portfolio, blending aerospace engineering with cutting-edge Computational Fluid Dynamics (CFD) expertise. 🚀 #Aerospace #CFD #Rocketry",
+      "Explore Shubham Umap's portfolio, showcasing senior FullStack Web Development expertise in React, Node.js, and the MERN stack. 🚀 #FullStack #MERN #ReactJS",
     start_url: '/',
     dir: "rtl",
     display: "standalone",

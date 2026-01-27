@@ -10,7 +10,7 @@ Council of the Aeronautical Sciences.
 
   Citation for the original published paper:
 
-  Holmgren, E., Haldar, D., Bertling Tjernberg, L., Johansson, J. (2022)
+   Holmgren, E., Umap, S., Bertling Tjernberg, L., Johansson, J. (2022)
   More Electric Aircraft (MEA) - Scaling Aspects and Weight Impact
   In: ICAS, Proceedings, 33th Congress of the International Council of the Aeronautical
   Sciences, Stockholm, Sweden
@@ -28,7 +28,7 @@ Permanent link to this version:
 http://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-328210
                          MORE ELECTRIC AIRCRAFT (MEA)
                        SCALING ASPECTS AND WEIGHT IMPACT
-          Emil Holmgren1 , Dhruv Haldar1 , Lina Bertling Tjernberg2 & Andreas Johansson2,3
+          Emil Holmgren1 , Shubham Umap1 , Lina Bertling Tjernberg2 & Andreas Johansson2,3
                                1 KTH Royal Institute of Technology, Stockholm, Sweden
     2 School of Electrical Engineering and Computer Science, KTH Royal Institute of Technology, Stockholm, Sweden
                                              3 SAAB, Linköping, Sweden
