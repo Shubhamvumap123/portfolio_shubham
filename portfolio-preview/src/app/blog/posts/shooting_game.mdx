@@ -1,0 +1,75 @@
+---
+title: "Shooting Game: A React-based Shooter"
+publishedAt: "2026-02-04"
+summary: "A deep dive into building a classic shooter in React: handling game loops, collision detection, and the challenge of state management."
+tag: "React, Game Dev, Case Study"
+image: "/images/gallery/shooting_game.gif"
+---
+
+Building a game in a web browser used to be the domain of Flash or complex Canvas APIs. But with modern JavaScript and React, we can build compelling interactive experiences using the same tools we use for web apps. This project, **Shooting Game**, is an exploration of that concept—a functional shooter built entirely with React components and Tailwind CSS.
+
+## The "Why": React for Games?
+
+Why build a game in React? It's not the obvious choice. Game engines like Unity or dedicated libraries like Phaser are optimized for the 60fps "update loop." React, on the other hand, is built for *reactive state updates*.
+
+I built this project to answer a specific engineering question: **Can we manage fast-paced game state (player position, projectiles, enemy health) using standard React hooks without killing performance?**
+
+It turns out, for simple 2D mechanics, the answer is yes. It forces you to think strictly about **unidirectional data flow**:
+- **Input** (Keyboard) → **State Update** (Position Vector) → **Render** (CSS Transform)
+
+## Inside the Game
+
+The game is a classic "shoot 'em up" where you control a canon to eliminate numbered targets.
+
+### 1. The Game Loop
+Instead of a traditional `while(true)` game loop, this project relies on React's lifecycle and `useEffect` to handle the "ticks" of the game.
+- **Movement:** Event listeners capture `keydown` events for WASD/Arrow keys, updating the player's X/Y coordinates in state.
+- **Projectiles:** When you fire, a new "bullet" object is added to a state array. A `setInterval` (or `requestAnimationFrame` wrapper) updates the position of every active bullet every few milliseconds.
+
+### 2. Collision Detection
+The core logic resides in checking for overlaps between:
+1. **Bullet Rects:** The bounding box of each active projectile.
+2. **Target Rects:** The bounding box of each enemy block.
+
+We use simple AABB (Axis-Aligned Bounding Box) collision detection. If a bullet intersects a target, we:
+1. Remove the bullet (splice it from the array).
+2. Decrement the target's HP (or remove it if `HP <= 0`).
+3. Increment the score.
+
+### 3. Tailwind for Styling
+Using Tailwind CSS allows for rapid prototyping of the game assets. Instead of loading heavy sprites, the "player" and "enemies" are just `div`s with specific border radii and background colors. This keeps the bundle size incredibly small and the game load time instant.
+
+## Critique & Current Limitations
+
+While the game works smoothly for a demo, the "React-only" approach has ceilings:
+
+- **Garbage Collection:** Creating and destroying bullet components rapidly can trigger browser garbage collection, causing micro-stutters.
+- **Re-render storms:** If the main parent component holds all the state (player + bullets + enemies), *every* bullet movement triggers a re-render of the entire game board.
+- **Hardcoded Levels:** Currently, the enemies are spawned based on a fixed logic, making replayability limited after clearing the screen.
+
+## Future Roadmap
+
+To turn this from a prototype into a full-fledged web game, here is the roadmap for version 2.0:
+
+### 🛠 Technical Refactor
+- **Canvas API Migration:** Move the rendering layer to `<canvas>` while keeping the UI (score, menus) in React. This separates the high-frequency rendering from the React reconciliation process.
+- **Game Loop Optimization:** Switch to a strictly delta-time based `requestAnimationFrame` loop ensures smoother movement on high-refresh-rate monitors.
+
+### 🚀 New Features
+1. **Level Editor:** A JSON-based level configuration system. This would allow users to create and share their own enemy layouts.
+2. **Boss Battles:** Introducing multi-stage enemies with moving hitboxes.
+3. **Power-ups:** Temporary effects like "Spread Shot" or "Rapid Fire" that modify the bullet state logic.
+4. **Backend Integration:** Integrate a simple database (Supabase or Firebase) to store high scores and player feedback.
+
+## Try It Yourself
+
+The best way to understand the performance characteristics is to play it. Notice how the input feels responsive? That's the power of modern JavaScript engines.
+
+[**Play the Demo**](https://shooting-game-lyart.vercel.app/)
+
+## Tech Stack
+
+- **Frontend:** React, JavaScript
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
+- **Testing:** Playwright (E2E testing for game logic!)
