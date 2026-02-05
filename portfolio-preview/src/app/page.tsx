@@ -8,7 +8,6 @@ import styles from "@/components/about/about.module.scss";
 import { getPosts } from "@/app/utils/utils";
 import { sanitizeJsonLd } from "@/app/utils/security";
 import { ModernHero } from "@/components/ModernHero";
-
 // Generate metadata for SEO and social sharing
 export async function generateMetadata() {
   const title = home.title;
@@ -64,7 +63,8 @@ export default function Home() {
   const allProjects = getPosts(["src", "app", "work", "projects"], false);
 
   return (
-    <Flex fillWidth direction="column" horizontal="center">
+    <Column maxWidth="m" gap="24" horizontal="center">
+
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -74,52 +74,88 @@ export default function Home() {
         }}
       />
 
-      {/* Premium Hero Section */}
-      <ModernHero
-        title="Shubham Umap"
-        description={home.subline}
-        ctaLabel="View Projects"
-        ctaLink="/work"
-      />
+      {/* Terminal Hero Section */}
+      <Column fillWidth paddingTop="xs" paddingBottom="0" horizontal="center" gap="m" className={styles.heroSpacing}>
+        <Column maxWidth="m" fillWidth horizontal="center" align="center">
+          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="24">
+            <ModernHero
+              title="Shubham Umap"
+              description={home.subline}
+              ctaLabel="View Projects"
+              ctaLink="/work"
+            />
+          </RevealFx>
 
-      {/* Main Content Column */}
-      <Column maxWidth="m" gap="24" horizontal="center" paddingTop="64">
-        {/* Featured Project */}
-        <RevealFx translateY="0" delay={0.6}>
-          <Projects range={[1, 1]} posts={allProjects} />
-        </RevealFx>
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="24">
+            <Text paddingX="l" wrap="balance" onBackground="neutral-medium" variant="heading-default-l" align="center">
+              {home.subline}
+            </Text>
+          </RevealFx>
 
-        {/* Blog Section (Conditional) */}
-        {routes["/blog"] && (
-          <Flex
-            fillWidth gap="24"
-            mobileDirection="column"
-            padding="xl"
-            radius="l"
-            border="neutral-alpha-weak"
-            background="surface"
-          >
-            <Flex flex={1} paddingLeft="l">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Latest from the blog
-              </Heading>
-            </Flex>
-            <Flex flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
-            </Flex>
-          </Flex>
-        )}
-
-        {/* Additional Projects */}
-        <Column fillWidth gap="24">
-          <Flex flex={1} paddingLeft="l">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Other Work and Publications
-            </Heading>
-          </Flex>
-          <Projects range={[2]} posts={allProjects} />
+          <RevealFx translateY="12" delay={0.4} horizontal="center" padding="16">
+            <Button
+              id="about"
+              data-border="rounded"
+              href="/about"
+              variant="secondary"
+              size="m"
+              weight="default"
+              arrowIcon
+              className={`${styles.themeButton} ${styles.glow}`}
+            >
+              <Row gap="8" vertical="center" paddingRight="4">
+                {about.avatar.display && (
+                  <Avatar
+                    marginRight="8"
+                    style={{
+                      marginLeft: "-0.75rem",
+                    }}
+                    src={person.avatar}
+                    size="m"
+                  />
+                )}
+                {about.title}
+              </Row>
+            </Button>
+          </RevealFx>
         </Column>
       </Column>
-    </Flex>
+
+      {/* Featured Project */}
+      <RevealFx translateY="0" delay={0.6}>
+        <Projects range={[1, 1]} posts={allProjects} />
+      </RevealFx>
+
+      {/* Blog Section (Conditional) */}
+      {routes["/blog"] && (
+        <Flex
+          fillWidth gap="24"
+          mobileDirection="column"
+          padding="xl"
+          radius="l"
+          border="neutral-alpha-weak"
+          background="surface"
+        >
+          <Flex flex={1} paddingLeft="l">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              Latest from the blog
+            </Heading>
+          </Flex>
+          <Flex flex={3} paddingX="20">
+            <Posts range={[1, 2]} columns="2" />
+          </Flex>
+        </Flex>
+      )}
+
+      {/* Additional Projects */}
+      <Column fillWidth gap="24">
+        <Flex flex={1} paddingLeft="l">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Other Work and Publications
+          </Heading>
+        </Flex>
+        <Projects range={[2]} posts={allProjects} />
+      </Column>
+    </Column>
   );
 }

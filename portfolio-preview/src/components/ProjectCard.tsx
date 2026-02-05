@@ -40,52 +40,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const showExploreLink = hasContent || (content && content.trim().length > 0);
 
   return (
-    <Spotlight
-      className="fill-width"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-      }}
-    >
-      <Column
-        fillWidth
-        gap="m"
-        style={{
-          backdropFilter: 'blur(16px)',
-          background: 'rgba(255, 255, 255, 0.02)',
-          borderRadius: 'var(--radius-xl)',
-          padding: 'var(--static-space-24)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)'
-        }}
-      >
+    <Spotlight className="fill-width" style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <Column fillWidth gap="m" style={{ backdropFilter: 'blur(10px)', background: 'var(--neutral-alpha-weak)', borderRadius: 'var(--radius-l)', padding: 'var(--static-space-16)' }}>
         <Carousel sizes="(max-width: 960px) 100vw, 960px" preload={preload} images={images.map((image) => ({ src: image, alt: title, }))} />
-        <Flex mobileDirection="column" fillWidth paddingX="s" paddingTop="24" paddingBottom="24" gap="l"> {title && (<Flex flex={5}><Heading as="h2" wrap="balance" variant="heading-strong-xl" style={{ letterSpacing: '-0.02em' }}>{title}</Heading></Flex>)}
+        <Flex mobileDirection="column" fillWidth paddingX="s" paddingTop="12" paddingBottom="24" gap="l"> {title && (<Flex flex={5}><Heading as="h2" wrap="balance" variant="heading-strong-xl">{title}</Heading></Flex>)}
           {(avatars.length > 0 || description?.trim() || showExploreLink) && (
-            <Column flex={7} gap="24">
+            <Column flex={7} gap="16">
               {avatars.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-              {description?.trim() && (<Text wrap="balance" variant="body-default-m" onBackground="neutral-medium" style={{ lineHeight: '1.6' }}>{description}</Text>)}
-              <Flex gap="32" wrap vertical="center">
+              {description?.trim() && (<Text wrap="balance" variant="body-default-s" onBackground="neutral-medium">{description}</Text>)}
+              <Flex gap="24" wrap>
                 {showExploreLink && (
                   <SmartLink
                     suffixIcon="arrowRight"
-                    style={{ margin: "0", width: "fit-content", textDecoration: 'none' }}
+                    style={{ margin: "0", width: "fit-content" }}
                     href={href}
                   >
-                    <Text variant="body-default-s" style={{ fontWeight: '600', color: 'var(--brand-alpha-strong)' }}>Explore Insights</Text>
+                    <Text variant="body-default-s">Explore detailed insights</Text>
                   </SmartLink>
                 )}
                 {link && (
                   <SmartLink
                     suffixIcon="arrowUpRightFromSquare"
-                    style={{ margin: "0", width: "fit-content", textDecoration: 'none' }}
+                    style={{ margin: "0", width: "fit-content" }}
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Text variant="body-default-s" style={{ fontWeight: '600' }}>Live Demo</Text>
+                    <Text variant="body-default-s">View more details</Text>
                   </SmartLink>
                 )}
               </Flex>
