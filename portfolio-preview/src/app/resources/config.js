@@ -23,8 +23,8 @@ const style = {
   brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   accent: "violet", // Not used
   solid: "color", // color | contrast
-  solidStyle: "plastic", // flat | plastic
-  border: "rounded", // rounded | playful | conservative
+  solidStyle: "flat", // flat | plastic
+  border: "conservative", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all" // all | micro | macro
 };
