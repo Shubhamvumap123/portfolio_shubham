@@ -42,11 +42,9 @@ const home = {
   title: `${person.name} - FullStack MERN Developer`,
   description: `Portfolio of ${person.name}, a FullStack Web Developer specialized in React.js, Node.js, and MongoDB.`,
   headline: (
-    <RevealFx translateY="4" fillWidth horizontal="start">
-      <span style={{ fontFamily: 'var(--font-family-code)' }}>
-        Building scalable and user-centric web applications
-      </span>
-    </RevealFx>
+    <>
+      Building scalable and user-centric web applications
+    </>
   ),
   featured: {
     display: true,

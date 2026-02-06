@@ -50,26 +50,35 @@ export const Header = () => {
               style={{ minWidth: "fit-content" }}
             >
               {routes["/"] && (
-                <ToggleButton
-                  prefixIcon="home"
-                  href="/"
-                  label={home.label}
-                  selected={pathname === "/"}
-                  aria-label="Home" // home.label is empty for visual design, so we provide an explicit accessible label
-                />
+                <>
+                  <ToggleButton
+                    className="m-flex-hide"
+                    prefixIcon="home"
+                    href="/"
+                    label={home.label}
+                    selected={pathname === "/"}
+                  />
+                  <ToggleButton
+                    className="m-flex-show"
+                    prefixIcon="home"
+                    href="/"
+                    aria-label={home.label}
+                    selected={pathname === "/"}
+                  />
+                </>
               )}
               <Line vert maxHeight="24" />
               {routes["/about"] && (
                 <React.Fragment key="about">
                   <ToggleButton
-                    className="s-flex-hide"
+                    className="m-flex-hide"
                     prefixIcon="person"
                     href="/about"
                     label={about.label}
                     selected={pathname === "/about"}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className="m-flex-show"
                     prefixIcon="person"
                     href="/about"
                     aria-label={about.label}
@@ -80,14 +89,14 @@ export const Header = () => {
               {routes["/work"] && (
                 <React.Fragment key="work">
                   <ToggleButton
-                    className="s-flex-hide"
+                    className="m-flex-hide"
                     prefixIcon="grid"
                     href="/work"
                     label={work.label}
                     selected={pathname.startsWith("/work")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className="m-flex-show"
                     prefixIcon="grid"
                     href="/work"
                     aria-label={work.label}
@@ -98,14 +107,14 @@ export const Header = () => {
               {routes["/publications"] && (
                 <React.Fragment key="publications">
                   <ToggleButton
-                    className="s-flex-hide"
+                    className="m-flex-hide"
                     prefixIcon="article"
                     href="/publications"
                     label={publications.label}
                     selected={pathname.startsWith("/publications")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className="m-flex-show"
                     prefixIcon="article"
                     href="/publications"
                     aria-label={publications.label}
@@ -116,14 +125,14 @@ export const Header = () => {
               {routes["/gallery"] && (
                 <React.Fragment key="gallery">
                   <ToggleButton
-                    className="s-flex-hide"
+                    className="m-flex-hide"
                     prefixIcon="gallery"
                     href="/gallery"
                     label={gallery.label}
                     selected={pathname.startsWith("/gallery")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className="m-flex-show"
                     prefixIcon="gallery"
                     href="/gallery"
                     aria-label={gallery.label}
@@ -134,14 +143,14 @@ export const Header = () => {
               {routes["/blog"] && (
                 <React.Fragment key="blog">
                   <ToggleButton
-                    className="s-flex-hide"
+                    className="m-flex-hide"
                     prefixIcon="book"
                     href="/blog"
                     label={blog.label}
                     selected={pathname.startsWith("/blog")}
                   />
                   <ToggleButton
-                    className="s-flex-show"
+                    className="m-flex-show"
                     prefixIcon="book"
                     href="/blog"
                     aria-label={blog.label}
