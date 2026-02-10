@@ -34,6 +34,8 @@ export * from "./LetterFx";
 export * from "./Line";
 export * from "./Logo";
 export * from "./LogoCloud";
+export { Mask } from "./MaskComp";
+export type { MaskProps } from "./MaskComp";
 export * from "./NavIcon";
 export * from "./NumberInput";
 export * from "./Option";

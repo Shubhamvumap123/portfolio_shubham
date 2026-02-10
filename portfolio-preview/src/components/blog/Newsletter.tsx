@@ -1,8 +1,9 @@
 "use client";
 
-import { Button, Column, Flex, Heading, Input, Text } from "@/once-ui/components";
-import { useState } from "react";
 import { newsletter } from "@/app/resources";
+import { isValidEmail } from "@/app/utils/security";
+import { Button, Column, Flex, Heading, Input, Mask, SmartImage, Text } from "@/once-ui/components";
+import { useState } from "react";
 
 export const Newsletter = () => {
     const [email, setEmail] = useState("");
@@ -13,6 +14,14 @@ export const Newsletter = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        // 🛡️ Sentinel: Validate email format and length before submission
+        if (!isValidEmail(email)) {
+            setStatus("error");
+            setError("Please enter a valid email address.");
+            return;
+        }
+
         setStatus("loading");
         setError(null);
 
@@ -39,85 +48,105 @@ export const Newsletter = () => {
     return (
         <Column
             fillWidth
-            padding="xl"
             marginBottom="l"
             border="neutral-alpha-weak"
             radius="l"
-            background="surface"
             align="center"
             horizontal="center"
+            position="relative"
+            overflow="hidden"
             style={{ textAlign: "center" }}
         >
+            <SmartImage
+                priority
+                src="/images/newsletter/day.png"
+                alt="Night background"
+                fill
+                sizes="100vw"
+                position="absolute"
+                top="0"
+                left="0"
+                style={{ zIndex: 0, objectFit: "cover" }}
+            />
+            <Mask cursor radius={30} fill position="absolute" style={{ zIndex: 0 }}>
+                <SmartImage
+                    priority
+                    src="/images/newsletter/night.png"
+                    alt="Day background"
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                />
+            </Mask>
             <Column
-                align="center"
-                horizontal="center"
                 fillWidth
-                gap="s"
-                style={{ maxWidth: "var(--responsive-width-xs)" }}
+                position="relative"
+                zIndex={1}
+                padding="xl"
+                align="start"
+                style={{
+                    background: "linear-gradient(to right, var(--page-background) 0%, transparent 60%)",
+                    textAlign: "left",
+                }}
             >
-                <Heading
-                    variant="display-strong-xs"
-                    onBackground="neutral-strong"
-                    marginBottom="s"
-                    wrap="balance"
-                >
-                    {newsletter.title}
-                </Heading>
-                <Text
-                    variant="body-default-l"
-                    onBackground="neutral-weak"
-                    marginBottom="l"
-                    wrap="balance"
-                >
-                    {newsletter.description}
-                </Text>
-            </Column>
+                <Column fillWidth gap="s" style={{ maxWidth: "32rem" }}>
+                    <Heading
+                        variant="display-strong-xs"
+                        onBackground="neutral-strong"
+                        marginBottom="s"
+                        wrap="balance"
+                    >
+                        {newsletter.title}
+                    </Heading>
+                    <Text
+                        variant="body-default-l"
+                        onBackground="neutral-weak"
+                        marginBottom="l"
+                        wrap="balance"
+                    >
+                        {newsletter.description}
+                    </Text>
 
-            <Flex fillWidth horizontal="center" maxWidth={30}>
-                {status === "success" ? (
-                    <Flex
-                        fillWidth
-                        padding="l"
-                        radius="l"
-                        background="brand-weak"
-                        border="brand-alpha-weak"
-                        horizontal="center"
-                    >
-                        <Text variant="body-default-m" onBackground="brand-strong">
-                            Success! Check your email to confirm.
-                        </Text>
-                    </Flex>
-                ) : (
-                    <form
-                        onSubmit={handleSubmit}
-                        style={{ width: "100%", display: "flex", justifyContent: "center" }}
-                    >
-                        <Flex fillWidth gap="8" direction="column" mobileDirection="column">
-                            <Input
-                                id="email"
-                                name="email_address"
-                                label="Email"
-                                placeholder="Email"
-                                type="email"
-                                labelAsPlaceholder
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                disabled={status === "loading"}
-                                error={status === "error"}
-                                errorMessage={error}
-                            />
-                            <Button
+                    <Flex fillWidth>
+                        {status === "success" ? (
+                            <Flex
                                 fillWidth
-                                variant="primary"
-                                size="m"
-                                disabled={status === "loading"}
+                                padding="l"
+                                radius="l"
+                                background="brand-weak"
+                                border="brand-alpha-weak"
+                                horizontal="center"
                             >
-                                {status === "loading" ? "Subscribing..." : "Subscribe"}
-                            </Button>
-                        </Flex>
-                    </form>
-                )}
-            </Flex>
+                                <Text variant="body-default-m" onBackground="brand-strong">
+                                    Success! Check your email to confirm.
+                                </Text>
+                            </Flex>
+                        ) : (
+                            <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+                                <Flex fillWidth gap="8" direction="column" mobileDirection="column">
+                                    <Input
+                                        id="email"
+                                        name="email_address"
+                                        label="Email"
+                                        placeholder="Email"
+                                        type="email"
+                                        labelAsPlaceholder
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        disabled={status === "loading"}
+                                        error={status === "error"}
+                                        errorMessage={error}
+                                        maxLength={254}
+                                    />
+                                    <Button fillWidth variant="primary" size="m" disabled={status === "loading"}>
+                                        {status === "loading" ? "Subscribing..." : "Subscribe"}
+                                    </Button>
+                                </Flex>
+                            </form>
+                        )}
+                    </Flex>
+                </Column>
+            </Column>
         </Column>
     );
 };
