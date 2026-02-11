@@ -82,7 +82,7 @@ const about = {
       <>
         React.js, Node.js and MERN stack development with 2+ years of experience in developing efficient, user-focused web applications. Skilled in React, Redux, Node.js, Express, and MongoDB, with a strong background in creating intuitive interfaces, optimizing API performance, and implementing secure authentication systems. Experienced in Agile workflows and team collaboration to deliver reliable software solutions within deadlines.
         <br /><br />
-        <a href="https://drive.google.com/file/d/17BzDRefQxIOH506jKVyJBYYGKZrhvwGr/view?usp=sharing" download="Shubham_Umap_Resume.pdf" target="_blank" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Download My Resume</a>
+        <a href="https://drive.google.com/file/d/1eMneL-yNNYksqCdp5Vsm_Q7jFrpimrSW/view?usp=sharing" download="Shubham_Umap_Resume.pdf" target="_blank" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Download My Resume</a>
       </>
     ),
   },
@@ -91,6 +91,44 @@ const about = {
     display: true,
     title: "Work Experience",
     experiences: [
+      {
+        company: "Tridiagonal Software",
+        timeframe: "Sep 2025 - Present",
+        role: "Software Engineer-1",
+        achievements: [
+          <Fragment key="se1-ach-1">
+            <strong>Architected 3D-to-UI Synchronization:</strong> Revamped complex React forms for scientific visualization modules, eliminating critical state desynchronization between user inputs and interactive 3D rendering windows.
+          </Fragment>,
+          <Fragment key="se1-ach-2">
+            <strong>Enforced Data Integrity:</strong> Devised strict validation logic for high-precision engineering tools (Histogram, Pathlines), preventing invalid data ranges and ensuring 100% simulation accuracy.
+          </Fragment>,
+          <Fragment key="se1-ach-3">
+            <strong>Streamlined Defect Resolution:</strong> Led cross-functional troubleshooting sessions with QA and Backend teams to resolve persistent state retention bugs in Pipeline Trees, reducing ticket resolution time by 40%.
+          </Fragment>,
+        ],
+        images: [],
+      },
+      {
+        company: "Independent Software Engineer",
+        timeframe: "Jan 2025 - Aug 2025",
+        role: "",
+        achievements: [
+          <Fragment key="freelance-ach-3">
+            <strong>Engineered Interactive Game Logic:</strong> Developed an object-oriented 2D browser game using HTML5 Canvas, implementing custom algorithms for collision detection and rendering optimization.
+          </Fragment>,
+          <Fragment key="freelance-ach-4">
+            <strong>Implemented Persistence Strategies:</strong> Leveraged Local Storage solutions for a Task Manager application to maintain user session data without backend dependencies.
+          </Fragment>,
+          <Fragment key="freelance-ach-1">
+            <strong>Built Scalable E-Commerce Architecture:</strong> Developed a React.js product platform utilizing Redux Toolkit for global state management to mirror enterprise-grade performance.
+          </Fragment>,
+          <Fragment key="freelance-ach-2">
+            <strong>Deployed Real-Time Dashboards:</strong> Integrated external RESTful APIs (Weather Data) using Asynchronous JavaScript and React Error Boundaries to handle complex data fetching.
+          </Fragment>,
+
+        ],
+        images: [],
+      },
       {
         company: "NCircletech Pvt. Ltd.",
         timeframe: "Feb 2023 - Dec 2024",
@@ -150,13 +188,14 @@ const about = {
     title: "Education",
     institutions: [
       {
-        name: 'Gurunanak Institute of technology',
-        description: <>Mechanical Engineering (June 2014 - June 2018). CGPA: 8.06</>,
-      },
-      {
         name: 'Masai School',
         description: <>MERN Stack Developer Training (Oct 2021 - Aug 2022). Secured a position within the top three projects out of over 20 contenders.</>,
       },
+      {
+        name: 'Gurunanak Institute of technology',
+        description: <>Mechanical Engineering (June 2014 - June 2018). CGPA: 8.06</>,
+      },
+
     ],
   },
   technical: {
@@ -263,7 +302,6 @@ const blog = {
   path: "/blog",
 };
 
-// Newsletter
 // Newsletter
 const newsletter = {
   display: true,

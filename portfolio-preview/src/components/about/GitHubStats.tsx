@@ -1,14 +1,16 @@
 "use client";
 
 import React from 'react';
-import { GitHubCalendar } from 'react-github-calendar';
+import { ActivityCalendar, ThemeInput } from 'react-activity-calendar';
 import { Column, Heading, Flex, Text, RevealFx } from "@/once-ui/components";
 
 interface GitHubStatsProps {
     username: string;
+    data: any[] | null;
+    error: boolean;
 }
 
-export const GitHubStats = ({ username }: GitHubStatsProps) => {
+export const GitHubStats = ({ username, data, error }: GitHubStatsProps) => {
     return (
         <Column fillWidth gap="m" marginBottom="40">
             <RevealFx translateY="8">
@@ -30,24 +32,33 @@ export const GitHubStats = ({ username }: GitHubStatsProps) => {
                 }}
             >
                 <div style={{ width: '100%', minWidth: '700px', display: 'flex', justifyContent: 'center' }}>
-                    <GitHubCalendar
-                        username={username}
-                        blockSize={12}
-                        blockMargin={4}
-                        fontSize={14}
-                        theme={{
-                            light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-                            dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-                        }}
-                    />
+                    {error ? (
+                        <Text variant="body-default-s" onBackground="danger-weak">
+                            Unable to load GitHub contributions.
+                        </Text>
+                    ) : !data ? (
+                        <Text variant="body-default-s" onBackground="neutral-weak">
+                            Loading...
+                        </Text>
+                    ) : (
+                        <ActivityCalendar
+                            data={data}
+                            blockSize={12}
+                            blockMargin={4}
+                            fontSize={14}
+                            theme={{
+                                light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+                                dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+                            } as ThemeInput}
+                        />
+                    )}
                 </div>
             </Flex>
             <Text variant="body-default-xs" onBackground="neutral-weak" align="center">
-                Powered by react-github-calendar
+                Powered by react-activity-calendar
             </Text>
         </Column>
     );
 };
 
-// Simple wrapper for RevealFx since it's used above
 

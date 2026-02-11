@@ -80,7 +80,40 @@ const structuredData = {
   },
 };
 
-export default function About() {
+const getLevel = (level: string): number => {
+  switch (level) {
+    case 'NONE': return 0;
+    case 'FIRST_QUARTILE': return 1;
+    case 'SECOND_QUARTILE': return 2;
+    case 'THIRD_QUARTILE': return 3;
+    case 'FOURTH_QUARTILE': return 4;
+    default: return 0;
+  }
+};
+
+async function getGitHubData(username: string) {
+  try {
+    const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`, { next: { revalidate: 3600 } });
+    if (!response.ok) {
+      return { data: null, error: true };
+    }
+    const json = await response.json();
+    const flattened = json.contributions.flat();
+    const transformed = flattened.map((day: any) => ({
+      date: day.date,
+      count: day.contributionCount,
+      level: getLevel(day.contributionLevel)
+    }));
+    return { data: transformed, error: false };
+  } catch (err) {
+    console.error(err);
+    return { data: null, error: true };
+  }
+}
+
+export default async function About() {
+  const { data, error } = await getGitHubData("shubhamvumap123");
+
   return (
     <Column className={styles.aboutContainer} marginTop="l">
       {/* Hidden H1 for accessibility */}
@@ -416,7 +449,7 @@ export default function About() {
           )}
 
           {/* GitHub Stats Section */}
-          <GitHubStats username="shubhamvumap123" />
+          <GitHubStats username="shubhamvumap123" data={data} error={error} />
 
           <Row gap="16" vertical="center" horizontal="center" marginTop="32">
             <ShareButton
