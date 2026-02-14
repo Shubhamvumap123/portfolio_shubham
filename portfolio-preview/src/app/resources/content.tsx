@@ -266,12 +266,12 @@ const about = {
   },
 };
 
-// Publications Page
-const publications = {
-  label: "Publications",
-  title: "Publications",
-  description: `Publications by ${person.name} `,
-  path: "/publications",
+// Technical Page
+const technical = {
+  label: "Technical",
+  title: "Technical Architecture",
+  description: `Technical designs and architecture by ${person.name}`,
+  path: "/technical",
 };
 
 // Work page
@@ -310,4 +310,57 @@ const newsletter = {
   action: "mailto:shubhamvumap@gmail.com",
 };
 
-export { person, social, home, about, work, gallery, publications, blog, newsletter };
+
+// Technical Modules (New)
+const technicalModules = [
+  {
+    title: "3D_VISUALIZATION",
+    description: "Integration of Forge & Cesium Viewers for CAD/Geospatial data.",
+    tech: ["Three.js", "WebGL", "React"],
+    status: "ONLINE",
+    icon: "cube", // Use a relevant icon name
+    details: [
+      "Integrated Forge Viewer and Cesium Viewer to enable 3D visualization of CAD and geospatial data.",
+      "Improved accessibility for 500+ datasets through optimized rendering pipelines.",
+      "Implemented camera controls and scene manipulation for enhanced user interaction."
+    ]
+  },
+  {
+    title: "PHYSICS_ENGINE",
+    description: "Custom collision detection & rendering algorithms for 2D gaming.",
+    tech: ["Canvas API", "Algorithms", "HTML5"],
+    status: "ACTIVE",
+    icon: "gamepad",
+    details: [
+      "Engineered an object-oriented 2D browser game using HTML5 Canvas without external physics libraries.",
+      "Developed custom algorithms for efficient collision detection and response.",
+      "Optimized rendering loops to maintain 60FPS performance across devices."
+    ]
+  },
+  {
+    title: "STATE_SYNCHRONIZER",
+    description: "Complex 3D-to-UI state management ensuring 100% simulation accuracy.",
+    tech: ["Redux", "React", "State Machines"],
+    status: "OPTIMAL",
+    icon: "refresh",
+    details: [
+      "Architected 3D-to-UI synchronization to eliminate critical state desynchronization.",
+      "Revamped complex React forms for scientific visualization modules.",
+      "Enforced strict data integrity validation for high-precision engineering tools."
+    ]
+  },
+  {
+    title: "DATA_BANK_CORE",
+    description: "Scalable NoSQL storage with flexible schema design for rapid iteration.",
+    tech: ["MongoDB", "Mongoose", "Aggregation"],
+    status: "SECURE",
+    icon: "database",
+    details: [
+      "Consolidated 500,000+ records into a unified data integration system.",
+      "Designed and implemented scalable server-side solutions processing 10,000+ daily requests.",
+      "Optimized database queries to achieve a 40% reduction in response times."
+    ]
+  },
+];
+
+export { person, social, home, about, work, gallery, technical, technicalModules, blog, newsletter };

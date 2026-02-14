@@ -56,7 +56,10 @@ import {
   FaWind,
   FaRocket,
   FaCube,
-  FaCode
+  FaCode,
+  FaServer,
+  FaDatabase,
+  FaGamepad
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -107,6 +110,8 @@ export const iconLibrary: Record<string, IconType> = {
   quote: FaQuoteRight,
 
   // Tech Stack & Skills
+  server: FaServer,
+  database: FaDatabase,
   python: FaPython,
   docker: FaDocker,
   react: FaReact,
@@ -120,4 +125,6 @@ export const iconLibrary: Record<string, IconType> = {
   nastran: FaRocket,
   siemens: SiSiemens,
   solidworks: FaCube,
+  cube: FaCube,
+  gamepad: FaGamepad,
 };
