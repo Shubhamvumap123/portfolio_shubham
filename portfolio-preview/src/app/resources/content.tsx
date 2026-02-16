@@ -318,7 +318,9 @@ const technicalModules = [
     description: "Integration of Forge & Cesium Viewers for CAD/Geospatial data.",
     tech: ["Three.js", "WebGL", "React"],
     status: "ONLINE",
-    icon: "cube", // Use a relevant icon name
+    icon: "cube",
+    type: "VISUALIZATION",
+    link: "https://github.com/Shubhamvumap123", // Placeholder
     details: [
       "Integrated Forge Viewer and Cesium Viewer to enable 3D visualization of CAD and geospatial data.",
       "Improved accessibility for 500+ datasets through optimized rendering pipelines.",
@@ -331,6 +333,8 @@ const technicalModules = [
     tech: ["Canvas API", "Algorithms", "HTML5"],
     status: "ACTIVE",
     icon: "gamepad",
+    type: "GAME_DEV",
+    link: "https://github.com/Shubhamvumap123", // Placeholder
     details: [
       "Engineered an object-oriented 2D browser game using HTML5 Canvas without external physics libraries.",
       "Developed custom algorithms for efficient collision detection and response.",
@@ -343,6 +347,8 @@ const technicalModules = [
     tech: ["Redux", "React", "State Machines"],
     status: "OPTIMAL",
     icon: "refresh",
+    type: "SYSTEMS",
+    link: "https://github.com/Shubhamvumap123", // Placeholder
     details: [
       "Architected 3D-to-UI synchronization to eliminate critical state desynchronization.",
       "Revamped complex React forms for scientific visualization modules.",
@@ -355,6 +361,8 @@ const technicalModules = [
     tech: ["MongoDB", "Mongoose", "Aggregation"],
     status: "SECURE",
     icon: "database",
+    type: "DATABASE",
+    link: "https://github.com/Shubhamvumap123", // Placeholder
     details: [
       "Consolidated 500,000+ records into a unified data integration system.",
       "Designed and implemented scalable server-side solutions processing 10,000+ daily requests.",
