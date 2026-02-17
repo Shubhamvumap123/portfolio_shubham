@@ -315,12 +315,12 @@ const newsletter = {
 const technicalModules = [
   {
     title: "3D_VISUALIZATION",
-    description: "Integration of Forge & Cesium Viewers for CAD/Geospatial data.",
+    description: "Web-based CAD/Geospatial visualization engine.",
     tech: ["Three.js", "WebGL", "React"],
     status: "ONLINE",
     icon: "cube",
     type: "VISUALIZATION",
-    link: "https://github.com/Shubhamvumap123", // Placeholder
+    link: "https://github.com/Shubhamvumap123",
     details: [
       "Integrated Forge Viewer and Cesium Viewer to enable 3D visualization of CAD and geospatial data.",
       "Improved accessibility for 500+ datasets through optimized rendering pipelines.",
@@ -329,12 +329,12 @@ const technicalModules = [
   },
   {
     title: "PHYSICS_ENGINE",
-    description: "Custom collision detection & rendering algorithms for 2D gaming.",
+    description: "Custom collision detection & rendering algorithms.",
     tech: ["Canvas API", "Algorithms", "HTML5"],
     status: "ACTIVE",
     icon: "gamepad",
     type: "GAME_DEV",
-    link: "https://github.com/Shubhamvumap123", // Placeholder
+    link: "https://github.com/Shubhamvumap123",
     details: [
       "Engineered an object-oriented 2D browser game using HTML5 Canvas without external physics libraries.",
       "Developed custom algorithms for efficient collision detection and response.",
@@ -343,12 +343,12 @@ const technicalModules = [
   },
   {
     title: "STATE_SYNCHRONIZER",
-    description: "Complex 3D-to-UI state management ensuring 100% simulation accuracy.",
+    description: "State management system for complex 3D-to-UI simulation.",
     tech: ["Redux", "React", "State Machines"],
     status: "OPTIMAL",
     icon: "refresh",
     type: "SYSTEMS",
-    link: "https://github.com/Shubhamvumap123", // Placeholder
+    link: "https://github.com/Shubhamvumap123",
     details: [
       "Architected 3D-to-UI synchronization to eliminate critical state desynchronization.",
       "Revamped complex React forms for scientific visualization modules.",
@@ -357,12 +357,12 @@ const technicalModules = [
   },
   {
     title: "DATA_BANK_CORE",
-    description: "Scalable NoSQL storage with flexible schema design for rapid iteration.",
+    description: "High-performance NoSQL storage architecture.",
     tech: ["MongoDB", "Mongoose", "Aggregation"],
     status: "SECURE",
     icon: "database",
     type: "DATABASE",
-    link: "https://github.com/Shubhamvumap123", // Placeholder
+    link: "https://github.com/Shubhamvumap123",
     details: [
       "Consolidated 500,000+ records into a unified data integration system.",
       "Designed and implemented scalable server-side solutions processing 10,000+ daily requests.",

@@ -31,7 +31,14 @@ export default function MissionControl() {
         : technicalModules.filter(m => m.type === activeFilter);
 
     return (
-        <Column fillWidth paddingY="l" paddingX="l" gap="xl" horizontal="center" style={{ position: 'relative' }}>
+        <Column fillWidth paddingY="l" paddingX="l" gap="xl" horizontal="center" style={{
+            position: 'relative',
+            backgroundImage: `radial-gradient(circle at 50% 50%, var(--brand-alpha-weak) 0%, transparent 70%), 
+                              linear-gradient(rgba(var(--brand-rgb), 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(var(--brand-rgb), 0.05) 1px, transparent 1px)`,
+            backgroundSize: '100% 100%, 40px 40px, 40px 40px',
+            minHeight: '100vh'
+        }}>
 
             {/* Hero Section: System Status */}
             <Column maxWidth="m" fillWidth gap="l" align="center">
@@ -42,7 +49,7 @@ export default function MissionControl() {
                             interval={3000}
                         >
                             <Heading variant="display-strong-xl" align="center">
-                                MISSION CONTROL
+                                TECHNICAL ARCHITECTURE
                             </Heading>
                         </GlitchFx>
                         <Flex gap="8" vertical="center" wrap horizontal="center">
@@ -54,7 +61,7 @@ export default function MissionControl() {
                                 boxShadow: '0 0 10px #00FF9D'
                             }} />
                             <Text variant="code-default-m" onBackground="neutral-medium" align="center">
-                                SYSTEM ONLINE // COMMANDER {person.firstName.toUpperCase()} // AUTHENTICATED
+                                SYSTEM STATUS: NOMINAL // AUTHORIZED ACCESS ONLY
                             </Text>
                         </Flex>
                     </Column>
@@ -72,7 +79,7 @@ export default function MissionControl() {
                                 cursor: 'pointer',
                                 padding: '8px 16px',
                                 borderRadius: '4px',
-                                background: activeFilter === type ? 'var(--brand-alpha-medium)' : 'transparent',
+                                background: activeFilter === type ? 'var(--brand-alpha-medium)' : 'rgba(var(--neutral-rgb), 0.1)',
                                 border: `1px solid ${activeFilter === type ? 'var(--brand-strong)' : 'var(--neutral-alpha-medium)'}`,
                                 transition: 'all 0.2s ease'
                             }}
@@ -97,7 +104,16 @@ export default function MissionControl() {
                     <Grid columns="2" gap="16" mobileColumns="1" fillWidth>
                         {filteredModules.map((module, index) => (
                             <TiltFx key={index} style={{ cursor: 'pointer' }}>
-                                <div onClick={() => setActiveModule(module)} style={{ height: '100%', width: '100%' }}>
+                                <div
+                                    onClick={() => setActiveModule(module)}
+                                    style={{
+                                        height: '100%',
+                                        width: '100%',
+                                        transition: 'transform 0.2s',
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                >
                                     <Column fillWidth style={{ height: '100%' }}>
                                         <HoloFx>
                                             <Flex
@@ -105,7 +121,13 @@ export default function MissionControl() {
                                                 padding="l"
                                                 gap="m"
                                                 fillWidth
-                                                style={{ height: '100%', minHeight: '220px' }}
+                                                style={{
+                                                    height: '100%',
+                                                    minHeight: '220px',
+                                                    border: activeModule === module ? '1px solid var(--brand-strong)' : '1px solid var(--neutral-alpha-medium)',
+                                                    boxShadow: activeModule === module ? '0 0 15px var(--brand-alpha-weak)' : 'none',
+                                                    transition: 'all 0.3s ease'
+                                                }}
                                                 align="start"
                                             >
                                                 <Flex fillWidth vertical="center" gap="12" horizontal="space-between">
@@ -134,7 +156,7 @@ export default function MissionControl() {
                                                 </Text>
 
                                                 <Flex style={{ marginTop: 'auto' }} gap="8" wrap>
-                                                    {module.tech.map((tech, i) => (
+                                                    {module.tech.map((tech: string, i: number) => (
                                                         <Flex
                                                             key={i}
                                                             paddingX="8"
