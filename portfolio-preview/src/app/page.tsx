@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { AboutCard } from "@/components/about/AboutCard";
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Row, Badge, Line } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL, routes } from "@/app/resources";
@@ -79,36 +80,6 @@ export default function Home() {
       <Column fillWidth paddingY="128" gap="32" align="center" horizontal="center">
         <Column fillWidth maxWidth="l" gap="32" align="center" horizontal="center">
 
-          <Flex
-            gap="12"
-            vertical="center"
-            paddingX="16"
-            paddingY="8"
-            style={{
-              border: '1px solid var(--neutral-alpha-medium)',
-              borderRadius: 'var(--radius-full)',
-              background: 'var(--neutral-alpha-weak)',
-              backdropFilter: 'blur(10px)',
-              cursor: 'pointer'
-            }}
-          >
-            <Text
-              variant="label-default-s"
-              onBackground="neutral-strong"
-            >
-              <Text as="span" weight="strong">More Electric Aircraft : IPS</Text>
-            </Text>
-
-            <Line vert maxHeight="16" />
-
-            <Text
-              variant="label-default-s"
-              style={{ color: 'var(--brand-solid-strong)' }}
-            >
-              Featured work
-            </Text>
-          </Flex>
-
           <Heading
             wrap="balance"
             variant="display-strong-l"
@@ -126,23 +97,11 @@ export default function Home() {
             {home.subline}
           </Text>
 
-          <Button
-            id="about"
+          <AboutCard
+            avatar={person.avatar}
+            title={about.title}
             href="/about"
-            variant="secondary"
-            size="m"
-            arrowIcon
-          >
-            <Flex gap="8" vertical="center">
-              {about.avatar.display && (
-                <Avatar
-                  src={person.avatar}
-                  size="m"
-                />
-              )}
-              {about.title}
-            </Flex>
-          </Button>
+          />
         </Column>
       </Column>
 
