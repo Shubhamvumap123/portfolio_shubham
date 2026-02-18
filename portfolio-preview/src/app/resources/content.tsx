@@ -82,7 +82,7 @@ const about = {
       <>
         React.js, Node.js and MERN stack development with 2+ years of experience in developing efficient, user-focused web applications. Skilled in React, Redux, Node.js, Express, and MongoDB, with a strong background in creating intuitive interfaces, optimizing API performance, and implementing secure authentication systems. Experienced in Agile workflows and team collaboration to deliver reliable software solutions within deadlines.
         <br /><br />
-        <a href="https://drive.google.com/file/d/1eMneL-yNNYksqCdp5Vsm_Q7jFrpimrSW/view?usp=sharing" download="Shubham_Umap_Resume.pdf" target="_blank" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Download My Resume</a>
+        <a href="https://drive.google.com/file/d/1RVQFU64iuJReZe708NtK8fxFlaezzriz/view?usp=sharing" download="Shubham_Umap_Resume.pdf" target="_blank" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Download My Resume</a>
       </>
     ),
   },
