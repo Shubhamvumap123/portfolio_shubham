@@ -10,7 +10,6 @@ import {
     SmartLink,
     Icon,
     Grid,
-    GlitchFx,
     HoloFx,
     TiltFx,
     LetterFx,
@@ -44,14 +43,11 @@ export default function MissionControl() {
             <Column maxWidth="m" fillWidth gap="l" align="center">
                 <RevealFx translateY="8">
                     <Column fillWidth align="center" gap="s">
-                        <GlitchFx
-                            speed="medium"
-                            interval={3000}
-                        >
-                            <Heading variant="display-strong-xl" align="center">
+                        <Heading variant="display-strong-xl" align="center">
+                            <LetterFx trigger="instant" speed="medium" charset={['X', 'Y', 'Z', '0', '1']}>
                                 TECHNICAL ARCHITECTURE
-                            </Heading>
-                        </GlitchFx>
+                            </LetterFx>
+                        </Heading>
                         <Flex gap="8" vertical="center" wrap horizontal="center">
                             <div style={{
                                 width: '12px',
