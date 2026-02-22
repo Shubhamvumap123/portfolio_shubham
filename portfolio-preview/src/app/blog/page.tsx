@@ -50,20 +50,11 @@ export default function Blog() {
         </Column>
 
         <Column fillWidth gap="l">
-          {/* Featured Post (Latest) */}
-          <Posts range={[1, 1]} columns="1" thumbnail direction="row" />
-
-          {/* Recent Posts (Next 2) */}
-          <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
+          {/* Unified Column Layout for all posts */}
+          <Posts columns="1" thumbnail direction="column" />
 
           {/* Newsletter */}
           <Newsletter />
-
-          <Heading variant="heading-strong-xl" marginLeft="l" marginBottom="xs">
-            Earlier posts
-          </Heading>
-          {/* Earlier Posts (Rest) */}
-          <Posts range={[4]} columns="2" thumbnail direction="column" />
         </Column>
       </Column>
     </Column>

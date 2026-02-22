@@ -1,0 +1,49 @@
+---
+title: "Building a Modern Ticket Support System"
+publishedAt: "2026-02-16"
+summary: "An in-depth look at the architecture and implementation of the Ticket Support platform."
+tag: "MERN, React, Case Study"
+image: "/images/gallery/ticket_system.gif"
+---
+
+Management of customer queries and support tickets is a core requirement for many businesses. In this post, I'll walk through the process of building a modern Ticket Support System using the MERN stack.
+
+## The Challenge
+
+The goal was to create a system that is:
+1. **Scalable**: Capable of handling a large volume of tickets.
+2. **Real-time**: Providing updates without needing manual page refreshes.
+3. **User-Friendly**: Reducing the friction for both customers and support agents.
+
+## Architecture Decisions
+
+### 1. Unified State Management
+Handling numerous tickets across different categories (Open, In Progress, Resolved) requires a stable state management strategy. By leveraging React's context and hooks, I ensured that the UI remains synced with the backend data at all times.
+
+### 2. Scalable API Design
+The backend is built with Express.js, featuring optimized routes for ticket filtering and search. This ensures that even with thousands of records, the system remains responsive.
+
+### 3. Data Integrity
+Using Mongoose for schema definition allows for strict validation of ticket data, preventing invalid states and ensuring that critical information is always captured.
+
+## Key Features
+
+### Admin Insights
+The admin dashboard provides a bird's-eye view of all system activity. Using data visualization, support managers can identify bottlenecks in the resolution process.
+
+### Seamless Communication
+The system facilitates clear communication between users and agents, with a clear history of all interactions on a per-ticket basis.
+
+## Conclusion
+
+Building this system reinforced the importance of clear architectural planning and the power of the MERN stack for creating enterprise-grade tools.
+
+[**View Live Demo**](https://ticket-support-orpin.vercel.app/)
+[**Source Code**](https://github.com/Shubhamvumap123/Ticket_Support)
+
+## Tech Stack
+
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Deployment:** Vercel

@@ -35,25 +35,36 @@ export default function Post({ post, thumbnail, direction = 'row', priority = fa
           position="relative"
           mobileDirection="column"
           fillWidth
-          paddingY="12"
-          paddingX="16"
-          gap={direction === 'row' ? '48' : '32'}
+          gap="24"
           direction={direction}
         >
           {post.metadata.image && thumbnail && (
-            <SmartImage
-              priority={priority}
-              className={`${styles.image} ${direction === 'row' ? styles.featured : ''}`}
-              sizes="640px"
-              border="neutral-alpha-weak"
-              cursor="interactive"
-              radius="l"
-              src={post.metadata.image}
-              aspectRatio="16 / 9"
-              height={direction === 'row' ? undefined : '200px'}
-            />
+            <Flex
+              fillWidth
+              style={{ position: 'relative', overflow: 'hidden', minHeight: direction === 'row' ? '300px' : '200px' }}
+            >
+              <SmartImage
+                priority={priority}
+                className={`${styles.image} ${direction === 'row' ? styles.featured : ''}`}
+                sizes="640px"
+                cursor="interactive"
+                src={post.metadata.image}
+                aspectRatio="16 / 9"
+                objectFit="contain"
+                style={{ background: 'var(--neutral-alpha-weak)', width: '100%' }}
+              />
+            </Flex>
           )}
-          <Column position="relative" fillWidth gap="8" vertical="center" align="start">
+          <Column
+            position="relative"
+            fillWidth
+            gap="8"
+            vertical="center"
+            align="start"
+            paddingX="16"
+            paddingBottom="16"
+            paddingTop={thumbnail ? "0" : "16"}
+          >
             <Flex gap="8" vertical="center">
               <Avatar size="s" src={person.avatar} />
               <Text variant="body-default-s" onBackground="neutral-weak">
