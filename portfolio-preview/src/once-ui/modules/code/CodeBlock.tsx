@@ -32,7 +32,7 @@ interface CodeBlockProps extends React.ComponentProps<typeof Flex> {
  * A component to display code snippets with syntax highlighting and optional preview.
  * Includes a "Spotlight" effect and glassmorphism styling for visual enhancement.
  */
-const CodeBlock: React.FC<CodeBlockProps> = ({
+const CodeBlock: React.FC<CodeBlockProps> = React.memo(({
   highlight,
   codeInstances = [],
   codePreview,
@@ -58,7 +58,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     if (codeRef.current && codeInstances.length > 0) {
       Prism.highlightAll();
     }
-  }, [code, codeInstances.length]);
+  }, [code, language, codeInstances.length]);
 
   const handleCopy = () => {
     if (codeInstances.length > 0) {
@@ -217,7 +217,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
       </Flex>
     </Spotlight>
   );
-};
+});
 
 CodeBlock.displayName = "CodeBlock";
 export { CodeBlock };

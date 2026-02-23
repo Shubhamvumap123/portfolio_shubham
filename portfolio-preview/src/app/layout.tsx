@@ -10,7 +10,6 @@ import { Geist } from "next/font/google";
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { CommandPalette } from "@/components/CommandPalette";
 import { themeScript } from "@/app/resources/theme-script";
 
 const Footer = dynamic(
@@ -19,6 +18,13 @@ const Footer = dynamic(
     loading: () => <div>Loading Footer...</div>,
   }
 );
+
+const CommandPalette = dynamic(
+  () => import('@/components/CommandPalette').then((mod) => mod.CommandPalette),
+  { ssr: false }
+);
+
+import { StructuredData } from "@/components/StructuredData";
 
 export async function generateMetadata() {
   const title = home.title;
@@ -193,6 +199,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           />
           <Flex fillWidth minHeight="16"></Flex>
           <Header />
+          <StructuredData />
           <Flex
             id="main-content"
             tabIndex={-1}

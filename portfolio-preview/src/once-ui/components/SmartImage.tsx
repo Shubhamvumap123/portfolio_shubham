@@ -50,7 +50,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
   objectFit = "cover",
   enlarge = false,
   src,
-  unoptimized = true,
+  unoptimized = false,
   priority,
   preload,
   loading = "lazy",
