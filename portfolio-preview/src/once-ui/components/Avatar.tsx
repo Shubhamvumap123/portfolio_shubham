@@ -11,6 +11,8 @@ interface AvatarProps extends React.ComponentProps<typeof Flex> {
   value?: string;
   /** Source URL for the avatar image */
   src?: string;
+  /** Whether to prioritize loading (LCP optimization) */
+  priority?: boolean;
   /** Whether the avatar is loading */
   loading?: boolean;
   /** Whether the avatar is empty */
@@ -53,6 +55,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       size = "m",
       value,
       src,
+      priority,
       loading,
       empty,
       statusIndicator,
@@ -104,6 +107,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
             fill
             alt="Avatar"
             sizes={`${sizeMapping[size]}px`}
+            priority={priority}
             className={styles.image}
           />
         );

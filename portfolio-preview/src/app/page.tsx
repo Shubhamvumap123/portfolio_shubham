@@ -1,13 +1,17 @@
-import Script from 'next/script';
 import { AboutCard } from "@/components/about/AboutCard";
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Row, Badge, Line } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
+import dynamic from 'next/dynamic';
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Row, Badge, Line } from "@/once-ui/components";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
-import { Posts } from "@/components/blog/Posts";
 import styles from "@/components/about/about.module.scss";
 import { getPosts } from "@/app/utils/utils";
 import { sanitizeJsonLd } from "@/app/utils/security";
+
+const Posts = dynamic(() => import('@/components/blog/Posts').then(mod => mod.Posts), {
+  loading: () => <Text variant="body-default-s" onBackground="neutral-weak">Loading posts...</Text>,
+  ssr: true,
+});
 
 // Generate metadata for SEO and social sharing
 export async function generateMetadata() {
@@ -101,6 +105,7 @@ export default function Home() {
             avatar={person.avatar}
             title={about.title}
             href="/about"
+            priority={true}
           />
         </Column>
       </Column>

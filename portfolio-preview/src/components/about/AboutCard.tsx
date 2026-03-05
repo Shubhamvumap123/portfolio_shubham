@@ -7,12 +7,14 @@ interface AboutCardProps {
     avatar: string;
     title: string;
     href: string;
+    priority?: boolean;
 }
 
 export const AboutCard = ({
     avatar,
     title,
-    href
+    href,
+    priority = false
 }: AboutCardProps) => {
     return (
         <Flex
@@ -37,6 +39,7 @@ export const AboutCard = ({
                         <Avatar
                             src={avatar}
                             size="m"
+                            priority={priority}
                             style={{
                                 border: '2px solid #5ce5c2',
                             }}

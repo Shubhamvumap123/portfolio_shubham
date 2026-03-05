@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import { AvatarGroup, Carousel, Column, Flex, Heading, SmartLink, Spotlight, Text, } from "@/once-ui/components";
 
 interface ProjectCardProps {
@@ -26,7 +28,7 @@ interface ProjectCardProps {
 /**
  * A card component for displaying project details with a carousel, title, description, and links.
  */
-export const ProjectCard: React.FC<ProjectCardProps> = ({
+export const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
   href,
   images = [],
   title,
@@ -76,4 +78,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </Column>
     </Spotlight>
   );
-};
+});
+
+ProjectCard.displayName = "ProjectCard";

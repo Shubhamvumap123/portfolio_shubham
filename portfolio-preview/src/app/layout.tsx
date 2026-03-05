@@ -20,8 +20,7 @@ const Footer = dynamic(
 );
 
 const CommandPalette = dynamic(
-  () => import('@/components/CommandPalette').then((mod) => mod.CommandPalette),
-  { ssr: false }
+  () => import('@/components/CommandPalette').then((mod) => mod.CommandPalette)
 );
 
 import { StructuredData } from "@/components/StructuredData";
