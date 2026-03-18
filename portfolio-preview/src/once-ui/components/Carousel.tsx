@@ -106,6 +106,7 @@ const Carousel: React.FC<CarouselProps> = ({
           alt={images[activeIndex]?.alt}
           aspectRatio={aspectRatio}
           src={images[activeIndex]?.src}
+          objectFit="contain"
           style={{
             ...(images.length > 1 && {
               cursor: "pointer",

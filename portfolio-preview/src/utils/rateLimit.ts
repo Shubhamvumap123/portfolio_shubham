@@ -43,19 +43,6 @@ export function rateLimit(ip: string, limit: number = 5, windowMs: number = 60 *
 }
 
 // Cleanup periodically to avoid memory leaks
-// We use a global interval check to prevent setting multiple intervals in dev HMR
-if (typeof global.rateLimitInterval === 'undefined') {
-  global.rateLimitInterval = setInterval(() => {
-    const now = Date.now();
-    for (const [ip, record] of rateLimitMap.entries()) {
-      if (now > record.resetTime) {
-        rateLimitMap.delete(ip);
-      }
-    }
-  }, 60 * 1000);
-}
-
-// Declare global type for the interval to avoid TS errors
-declare global {
-  var rateLimitInterval: NodeJS.Timeout | undefined;
-}
+// In serverless environments (like Vercel), setInterval can cause memory leaks 
+// or keep functions unnecessarily active causing performance degradation over time.
+// Cleanup is already handled passively via the MAX_RECORDS check inside the rateLimit function.

@@ -147,6 +147,7 @@ export default async function Project({ params }: WorkParams) {
               radius="m"
               alt={`${post.metadata.title} project image`}
               src={post.metadata.images[0]}
+              objectFit="contain"
             />
           )}
 

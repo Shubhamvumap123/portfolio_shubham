@@ -130,6 +130,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
                 priority
                 sizes="(min-width: 768px) 100vw, 768px"
                 radius="l"
+                objectFit="contain"
               />
             )}
             <Column as="article" fillWidth maxWidth="m">
