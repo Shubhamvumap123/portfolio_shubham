@@ -1,5 +1,5 @@
 // Base URL for the application
-const baseURL = "dhruvhaldar.vercel.app";
+const baseURL = "shubham-umap.netlify.app";
 
 // Route configuration
 const routes = {
@@ -7,6 +7,7 @@ const routes = {
   "/about": true,
   "/work": true,
   "/technical": true,
+  "/playground": true,
   "/gallery": false,
   "/blog": true
 };

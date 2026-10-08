@@ -43,7 +43,7 @@ const home = {
   description: `Portfolio of ${person.name}, a FullStack Web Developer specialized in React.js, Node.js, and MongoDB.`,
   headline: (
     <>
-      Building scalable and user-centric web applications
+      Building scalable and usercentric web applications
     </>
   ),
   featured: {
@@ -274,6 +274,14 @@ const technical = {
   path: "/technical",
 };
 
+// Playground Page
+const playground = {
+  label: "Playground",
+  title: "Engineering Playground",
+  description: `Interactive engineering incident investigation simulator by ${person.name}`,
+  path: "/playground",
+};
+
 // Work page
 const work = {
   label: "Work",
@@ -371,4 +379,4 @@ const technicalModules = [
   },
 ];
 
-export { person, social, home, about, work, gallery, technical, technicalModules, blog, newsletter };
+export { person, social, home, about, work, gallery, technical, playground, technicalModules, blog, newsletter };

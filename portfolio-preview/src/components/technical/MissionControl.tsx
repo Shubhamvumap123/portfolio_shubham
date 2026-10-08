@@ -19,6 +19,7 @@ import {
 } from "@/once-ui/components";
 import { technical, technicalModules, baseURL, person } from "@/app/resources";
 import SystemLogs from '@/components/technical/SystemLogs';
+import { TelemetryBar } from '@/components/technical/TelemetryBar';
 
 export default function MissionControl() {
     const [activeModule, setActiveModule] = useState<any>(null);
@@ -68,6 +69,8 @@ export default function MissionControl() {
                 </RevealFx>
 
                 <Line fillWidth border="neutral-alpha-medium" />
+
+                <TelemetryBar />
 
                 {/* Filter Controls */}
                 <Flex gap="12" wrap horizontal="center" marginTop="m">

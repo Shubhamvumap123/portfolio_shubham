@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Row, Badge, Line } from "@/once-ui/components";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
+import Link from "next/link";
 import styles from "@/components/about/about.module.scss";
 import { getPosts } from "@/app/utils/utils";
 import { sanitizeJsonLd } from "@/app/utils/security";
@@ -115,6 +116,61 @@ export default function Home() {
         {/* Featured Project */}
         <RevealFx translateY="0" delay={0.6}>
           <Projects range={[1, 1]} posts={allProjects} />
+        </RevealFx>
+
+        {/* Engineering Playground Interactive Simulator Banner */}
+        <RevealFx translateY="0" delay={0.7}>
+          <Flex
+            fillWidth
+            direction="column"
+            padding="xl"
+            radius="l"
+            border="neutral-alpha-weak"
+            gap="16"
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              background: "linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(15, 23, 42, 0.5) 100%)",
+              border: "1px solid rgba(14, 165, 233, 0.25)",
+            }}
+          >
+            <Flex fillWidth horizontal="space-between" align="center" wrap gap="12">
+              <Flex direction="column" gap="4">
+                <Text
+                  variant="body-default-xs"
+                  style={{
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    color: "#38bdf8",
+                  }}
+                >
+                  🧪 Interactive Simulator
+                </Text>
+                <Heading as="h2" variant="display-strong-s">
+                  Engineering Playground
+                </Heading>
+              </Flex>
+              <Link
+                href="/playground"
+                style={{
+                  textDecoration: "none",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  background: "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)",
+                  color: "#ffffff",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  boxShadow: "0 4px 12px rgba(14, 165, 233, 0.3)",
+                }}
+              >
+                Launch Playground →
+              </Link>
+            </Flex>
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              Don&apos;t just read what I built. <strong>Investigate it.</strong> Step into real-world production incidents, inspect microservice health metrics, trace evidence, and test your engineering decisions.
+            </Text>
+          </Flex>
         </RevealFx>
 
         {/* Blog Section (Conditional) */}

@@ -6,6 +6,7 @@ import TableOfContents from "@/components/about/TableOfContents";
 import { Timeline } from "@/components/about/Timeline";
 import { GitHubStats } from "@/components/about/GitHubStats";
 import { CopyEmailButton } from "@/components/about/CopyEmailButton";
+import { TechSkillsFilter } from "@/components/about/TechSkillsFilter";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
 import { sanitizeJsonLd } from "@/app/utils/security";
@@ -406,45 +407,7 @@ export default async function About() {
                   {about.technical.title}
                 </Heading>
               </RevealFx>
-              <Grid columns="2" mobileColumns="1" gap="m">
-                {about.technical.skills.map((skill, index) => (
-                  <RevealFx key={`${skill}-${index}`} translateY="12" delay={index * 0.1}>
-                    <Spotlight className="fill-width" style={{ height: '100%' }}>
-                      <Column
-                        fillWidth
-                        padding="l"
-                        radius="l"
-                        gap="m"
-                        style={{
-                          height: '100%',
-                          backdropFilter: 'blur(12px)',
-                          background: 'linear-gradient(135deg, var(--neutral-alpha-weak) 0%, var(--neutral-alpha-medium) 100%)',
-                          border: '1px solid var(--neutral-border-weak)',
-                          transition: 'transform 0.2s, box-shadow 0.2s'
-                        }}
-                      >
-                        <Row gap="16" vertical="center">
-                          <Flex
-                            padding="12"
-                            radius="m"
-                            background="neutral-strong"
-                            style={{ border: '1px solid var(--brand-alpha-medium)' }}
-                          >
-                            {/* @ts-ignore */}
-                            {skill.icon && <Icon name={skill.icon} size="l" onBackground="brand-medium" />}
-                          </Flex>
-                          <Text variant="heading-strong-xs" style={{ fontFamily: 'var(--font-family-code)' }}>
-                            {skill.title}
-                          </Text>
-                        </Row>
-                        <Text variant="body-default-s" onBackground="neutral-medium">
-                          {skill.description}
-                        </Text>
-                      </Column>
-                    </Spotlight>
-                  </RevealFx>
-                ))}
-              </Grid>
+              <TechSkillsFilter skills={about.technical.skills} />
             </>
           )}
 

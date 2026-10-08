@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 import { routes } from "@/app/resources";
-import { home, about, work, gallery, technical, blog } from "@/app/resources/content";
+import { home, about, work, gallery, technical, playground, blog } from "@/app/resources/content";
 import { ThemeToggle } from "./ThemeToggle";
 
 
@@ -119,6 +119,24 @@ export const Header = () => {
                     href="/technical"
                     aria-label={technical.label}
                     selected={pathname.startsWith("/technical")}
+                  />
+                </React.Fragment>
+              )}
+              {routes["/playground"] && (
+                <React.Fragment key="playground">
+                  <ToggleButton
+                    className="m-flex-hide"
+                    prefixIcon="grid"
+                    href="/playground"
+                    label={playground.label}
+                    selected={pathname.startsWith("/playground")}
+                  />
+                  <ToggleButton
+                    className="m-flex-show"
+                    prefixIcon="grid"
+                    href="/playground"
+                    aria-label={playground.label}
+                    selected={pathname.startsWith("/playground")}
                   />
                 </React.Fragment>
               )}
