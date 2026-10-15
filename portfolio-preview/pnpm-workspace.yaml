@@ -1,0 +1,8 @@
+allowBuilds:
+  '@biomejs/biome': true
+  '@parcel/watcher': true
+  canvas: true
+  electron: true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

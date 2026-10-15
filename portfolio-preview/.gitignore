@@ -39,4 +39,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # large files
-
+/AGENTS.md
+/CLAUDE.md
